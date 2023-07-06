@@ -23,7 +23,6 @@ export default function Success({
   return (
     <>
       <Head>
-        {" "}
         <title> Compra Efetuada | Ignite Shop</title>
         <meta name="robots" content="noindex" />
       </Head>
@@ -36,10 +35,13 @@ export default function Success({
             </ImageContainer>
           ))}
         </ImagesContainer>
+
         <h1>Compra efetuada </h1>
         <p>
-          Uhuul <strong>{customerName}</strong>, sua compra de{" "}
-          {productsImages.length} já está a caminho da sua casa.
+          Uhuul <strong>{customerName}</strong>, sua compra de {""}
+          {productsImages.length}{" "}
+          {productsImages.length === 1 ? "camiseta" : "camisetas"} já está a
+          caminho da sua casa.
         </p>
 
         <Link href="/">Voltar ao catálogo</Link>

@@ -1,11 +1,11 @@
 import {
   CartClose,
-  CartContainer,
   CartContent,
   CartProduct,
   CartQuantity,
   CartProductImage,
   CartProductDetails,
+  CartQuantityDetails,
 } from "../styles/pages/cartshop";
 import { CartButton } from "./CartButton";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -54,59 +54,55 @@ export default function CartShop() {
       <Dialog.Trigger asChild>
         <CartButton />
       </Dialog.Trigger>
+
       <Dialog.Portal>
-        <CartContainer>
-          <CartContent>
-            <CartClose>
-              <X size={24} weight="bold" />
-            </CartClose>
-            <strong>Sacola de Compras</strong>
-            <section>
-              <CartProduct>
-                {cartItemsQuantity <= 0 && (
-                  <p>Parece que seu carrinho está vazio</p>
-                )}
-                {cartItems.map((item) => (
-                  <>
-                    <CartProductImage key={item.id}>
-                      <Image
-                        src={item.imageUrl}
-                        width={100}
-                        height={93}
-                        alt=""
-                      />
-                    </CartProductImage>
-                    <CartProductDetails>
-                      <span>{item.name}</span>
-                      <strong>{item.price}</strong>
-                      <button onClick={() => handleRemoveItemFromCart(item.id)}>
-                        Remover
-                      </button>
-                    </CartProductDetails>
-                  </>
-                ))}
+        <CartContent>
+          <CartClose>
+            <X size={24} weight="bold" />
+          </CartClose>
+
+          <strong>Sacola de Compras</strong>
+
+          <section>
+            {cartItemsQuantity <= 0 && (
+              <p>Parece que seu carrinho está vazio</p>
+            )}
+            {cartItems.map((item) => (
+              <CartProduct key={item.id}>
+                <CartProductImage>
+                  <Image src={item.imageUrl} width={100} height={93} alt="" />
+                </CartProductImage>
+                <CartProductDetails>
+                  <span>{item.name}</span>
+                  <strong>{item.price}</strong>
+                  <button onClick={() => handleRemoveItemFromCart(item.id)}>
+                    Remover
+                  </button>
+                </CartProductDetails>
               </CartProduct>
-            </section>
-            <CartQuantity>
+            ))}
+          </section>
+          <CartQuantity>
+            <CartQuantityDetails>
               <div>
                 <span>Quantidade</span>
-                <span>
+                <p>
                   {cartItemsQuantity}{" "}
                   {cartItemsQuantity === 1 ? "item" : "itens"}{" "}
-                </span>
+                </p>
               </div>
               <div>
-                <strong>Valor total</strong>
-                <strong>{totalCartPriceCorrected}</strong>
+                <span>Valor total</span>
+                <p>{totalCartPriceCorrected}</p>
               </div>
-              <button
-                disabled={isCreatingCheckoutsession || cartItemsQuantity <= 0}
-                onClick={handleBuyProduct}>
-                Finalizar Compra
-              </button>
-            </CartQuantity>
-          </CartContent>
-        </CartContainer>
+            </CartQuantityDetails>
+            <button
+              disabled={isCreatingCheckoutsession || cartItemsQuantity <= 0}
+              onClick={handleBuyProduct}>
+              Finalizar Compra
+            </button>
+          </CartQuantity>
+        </CartContent>
       </Dialog.Portal>
     </Dialog.Root>
   );

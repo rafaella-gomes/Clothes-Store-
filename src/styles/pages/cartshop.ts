@@ -1,33 +1,24 @@
 import { styled } from "..";
 import * as Dialog from "@radix-ui/react-dialog";
 
-export const CartContainer = styled("div", {
-  display: "flex",
-  width: "30rem",
-  height: "56,25rem",
-  flexDirection: "column",
-  justifyContent: "center",
-  margin: "auto",
-});
-
 export const CartContent = styled(Dialog.Content, {
-  display: "flex",
-  flexDirection: "column",
-  width: "30rem",
-  padding: "3rem",
-  paddingTop: "4.5rem",
-  background: "$gray800",
-  boxShadow: "-4px 0px 30px rgba(0, 0, 0, 0.8)",
   position: "fixed",
   top: 0,
   right: 0,
   bottom: 0,
+  width: "30rem",
+  background: "$gray800",
+  padding: "3rem",
+  paddingTop: "4.5rem",
+  boxShadow: "-4px 0px 30px rgba(0, 0, 0, 0.8)",
+  display: "flex",
+  flexDirection: "column",
 
   strong: {
     fontWeight: "bold",
     fontSize: "$lg",
     color: "$gray100",
-    marginBottom: "1.5rem",
+    marginBottom: "2rem",
   },
 });
 
@@ -46,6 +37,7 @@ export const CartProduct = styled("div", {
   gap: "1.25rem",
   alignItems: "center",
   height: "5.815rem",
+  marginBottom: "2.5rem",
 });
 
 export const CartProductImage = styled("div", {
@@ -55,7 +47,7 @@ export const CartProductImage = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: "8px",
+  borderRadius: 8,
 
   img: {
     objectFit: "cover",
@@ -74,7 +66,6 @@ export const CartProductDetails = styled("div", {
 
   strong: {
     marginTop: 4,
-    fontWeight: "bold",
     fontSize: "$md",
     color: "$gray100",
   },
@@ -101,24 +92,6 @@ export const CartQuantity = styled("div", {
   flexDirection: "column",
   marginTop: "auto ",
 
-  div: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: " space-between",
-
-    span: {
-      fontWeight: "400",
-      fontSize: "$s",
-      color: "$gray100",
-    },
-
-    strong: {
-      fontWeight: "bold",
-      fontSize: "$md",
-      color: "$gray100",
-    },
-  },
-
   button: {
     width: "100%",
     background: "$green500",
@@ -136,6 +109,36 @@ export const CartQuantity = styled("div", {
 
     "	&:not(:disabled):hover": {
       backgroundColor: "$green300",
+    },
+  },
+});
+
+export const CartQuantityDetails = styled("section", {
+  display: "flex",
+  flexDirection: "column",
+  gap: 8,
+  marginBottom: 55,
+
+  div: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    p: {
+      fontSize: "$md",
+      color: "$gray300",
+    },
+
+    "&:last-child": {
+      fontWeight: "bold",
+
+      span: {
+        fontSize: "$md",
+      },
+      p: {
+        fontSize: "$xl",
+        color: "$gray100",
+      },
     },
   },
 });
